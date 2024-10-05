@@ -23,10 +23,12 @@ func _ready():
 					can_insert = false
 			if can_insert:
 				random_positions.push_front(random_position)
+				ResourcePositions.positions.push_front(random_position)
 				break
 			iterations += 1
 			if iterations > max_iterations:
 				random_positions.push_front(random_position)
+				ResourcePositions.positions.push_front(random_position)
 				print("Maximum amount of iterations was achieved while searching for avalible position for leafs")
 				break
 	for pos in random_positions:
