@@ -73,14 +73,22 @@ func _ready():
 
 
 func _on_ButtonPlus_pressed(instance, buttons_instance):
-	_update_workers_label(instance, buttons_instance, instance.workers + 1)
+	if Storage.get_free_ants() <= 0:
+		return
+		
+	_update_workers(instance, buttons_instance, instance.workers + 1)
+	Storage.working_ants += 1
+	print(Storage.working_ants)
 
 func _on_ButtonMinus_pressed(instance, buttons_instance):
-	_update_workers_label(instance, buttons_instance, instance.workers - 1)
-
-func _update_workers_label(instance, buttons_instance, workers_value):
-	if workers_value < 0:
+	if Storage.working_ants <= 0 || instance.workers <= 0:
 		return
+		
+	_update_workers(instance, buttons_instance, instance.workers - 1)
+	Storage.working_ants -= 1
+	print(Storage.working_ants)
+
+func _update_workers(instance, buttons_instance, workers_value):
 	instance.workers = workers_value
 	var workers_label = buttons_instance.get_node("WorkersLabel")
 	workers_label.text = "[center]" + str(workers_value) + "[/center]"

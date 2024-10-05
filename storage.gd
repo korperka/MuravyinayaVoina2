@@ -1,15 +1,14 @@
 extends Node
 
-var ants_count = 20
-var ants = []
+static var ants_count = 100
+static var working_ants = 0
+static var ants = []
 
-var resources = 0
+# список ресов (индекс - уровень)
+static var anthill_updates = [25, 75, 200, 500]
+static var anthill_level = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+static var resources = 0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+static func get_free_ants() -> int:
+	return	ants_count - working_ants
