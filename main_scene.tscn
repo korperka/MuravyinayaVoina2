@@ -9,5 +9,5 @@ script = ExtResource("1_2glsl")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(570, 320)
+position = Vector2(578, 327)
 texture = ExtResource("2_3cdwb")
