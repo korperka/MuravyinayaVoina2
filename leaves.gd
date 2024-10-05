@@ -3,7 +3,7 @@ extends Node2D
 class_name Leaves
 
 @export
-var test : int = 5
+var workers : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
