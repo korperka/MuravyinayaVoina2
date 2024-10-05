@@ -9,7 +9,6 @@ var number_of_objects = 5
 
 func _ready():
 	var viewport_size = get_window().size
-	var spawn_instance = get_node("MainNode")
 	
 	for i in range(number_of_objects):
 		var instance : Leaves = object_scene.instantiate()
