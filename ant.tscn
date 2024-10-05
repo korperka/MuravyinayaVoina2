@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmbpyxtuwdf1y"]
+
+[ext_resource type="Texture2D" uid="uid://dqeun4l438p4q" path="res://ant.png" id="1_e4u48"]
+[ext_resource type="Script" path="res://ant.gd" id="1_xrkwy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiet8"]
+atlas = ExtResource("1_e4u48")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ra6db"]
+atlas = ExtResource("1_e4u48")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7chuv"]
+atlas = ExtResource("1_e4u48")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5v3k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiet8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ra6db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7chuv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 13.0
+}]
+
+[node name="Ant" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_xrkwy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(2.375, 2.625)
+sprite_frames = SubResource("SpriteFrames_k5v3k")
+animation = &"walk"
+frame_progress = 0.600564

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://brtrs5twonwds"]
+
+[ext_resource type="Script" path="res://leaves.gd" id="1_0sdb8"]
+[ext_resource type="Texture2D" uid="uid://c0lqur3rrwiv0" path="res://kucha_listyev2.png" id="1_5tphu"]
+
+[node name="Leaves" type="Node2D"]
+script = ExtResource("1_0sdb8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5tphu")
