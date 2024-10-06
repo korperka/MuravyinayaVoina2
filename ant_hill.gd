@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	# Spawn ants at regular intervals
 	ant_spawn_interval -= delta
 	if ant_spawn_interval <= 0:
-		for i in range(ResourcePositions.resources.filter(func(resource): return resource.workers > 0).size()):
+		for i in range(ResourcePositions.resources.filter(func(resource): return resource.workers > 0).size() * 2):
 			spawn_ant($Sprite2D.position)
 		ant_spawn_interval = 10.0  # Reset the spawn interval
 
@@ -49,10 +49,6 @@ func find_random_leaf_pile() -> Vector2:
 	
 	print("No available leaf piles found")
 	return Vector2.ZERO
-
-func animatic():
-	var random_X = randf_range(get_viewport().get_size().x+50, get_viewport().get_size().x+150)
-	var random_Y = randf_range(get_viewport().get_size().y+50, get_viewport().get_size().y+150)
 
 func spawn_ant(pos: Vector2) -> Ant:
 	var instance_scene = ant_scene.instantiate()

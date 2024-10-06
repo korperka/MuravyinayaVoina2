@@ -9,7 +9,7 @@ var number_of_objects = 50
 var min_spawn_distance = 200
 var max_iterations = 100
 
-var object_scenes = [preload("res://grassTile1.tscn"), preload("res://grassTile2.tscn"), preload("res://grassTile3.tscn"), preload("res://grassTile4.tscn")]
+var object_scenes = [preload("res://grassTile1.tscn"), preload("res://grassTile2.tscn"), preload("res://grassTile3.tscn")]
 
 var rng = RandomNumberGenerator.new()
 
@@ -23,8 +23,7 @@ func _floor():
 		startX += 32;
 		while startY<viewport_size.y*2:
 			startY += 32
-			randomize()
-			var r = int(rng.randf_range(0, 4))
+			var r = int(rng.randf_range(0,2))
 			var instance = object_scenes[r].instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 			 # Randomly position the instance within the screen area
 			var pos = Vector2(startX, startY)
