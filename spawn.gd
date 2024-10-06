@@ -15,19 +15,22 @@ var rng = RandomNumberGenerator.new()
 
 func _floor():
 	# Number of objects to create
-	var tilesX = 20
-	var tilesY = 25
 	var viewport_size = get_viewport().get_size()
-	for i in range(tilesX):
-		for j in range(tilesY):
+	var startX = -1*viewport_size.x*2
+	var startY = -1*viewport_size.y*2
+	
+	while startX<viewport_size.x*2:
+		startX += 32;
+		while startY<viewport_size.y*2:
+			startY += 32
 			var r = int(rng.randf_range(0,2))
 			var instance = object_scenes[r].instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 			 # Randomly position the instance within the screen area
-			var random_position = Vector2(i*((viewport_size.x)/tilesX), j*(viewport_size.y/tilesY))
-			instance.position = random_position
-  
-			# Add the instance to the current scene
+			print(startX, " ", startY)
+			var pos = Vector2(startX, startY)
+			instance.position = pos
 			add_child(instance)
+		startY = -1*viewport_size.y*2
 
 
 func _ready():
