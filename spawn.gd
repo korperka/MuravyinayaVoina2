@@ -5,9 +5,9 @@ var object_scene = preload("res://leaves.tscn")
 var button_scene = preload("res://buttons.tscn")  # Загрузка сцены кнопок
 
 # Number of objects to create
-var number_of_objects = 5
-var min_spawn_distance = 150
-var max_iterations = 10
+var number_of_objects = 50
+var min_spawn_distance = 200
+var max_iterations = 100
 
 var object_scenes = [preload("res://grassTile1.tscn"), preload("res://grassTile2.tscn"), preload("res://grassTile3.tscn")]
 
@@ -26,7 +26,6 @@ func _floor():
 			var r = int(rng.randf_range(0,2))
 			var instance = object_scenes[r].instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 			 # Randomly position the instance within the screen area
-			print(startX, " ", startY)
 			var pos = Vector2(startX, startY)
 			instance.position = pos
 			add_child(instance)
@@ -36,13 +35,14 @@ func _floor():
 func _ready():
 	var viewport_size = get_window().size
 	var random_positions: Array[Vector2] = []
+	var size = Vector2(viewport_size.x * 2 + 1000, viewport_size.y * 2 + 600)
 	
 	_floor()
 	
 	for i in range(number_of_objects):
 		var iterations = 0
 		while true:
-			var random_position = Vector2(randf_range(0, viewport_size.x), randf_range(0, viewport_size.y))
+			var random_position = Vector2(randf_range(Storage.anthill_position.x - size.x / 2, Storage.anthill_position.x + size.x / 2), randf_range(Storage.anthill_position.y - size.y / 2, Storage.anthill_position.y + size.y / 2))
 			var can_insert = true
 			for pos in random_positions:
 				if (random_position - pos).length() < min_spawn_distance: 

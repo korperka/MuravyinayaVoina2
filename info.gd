@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	# Update the text by directly setting it
 	var formatted_text = "Resources: {resources}\nAnts: {ants}\nLevel: {level}".format({
 		"resources": Storage.resources,
-		"ants": Storage.ants_count,
+		"ants": Storage.working_ants,
 		"level": Storage.anthill_level
 	})
 

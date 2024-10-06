@@ -3,10 +3,11 @@ extends Node2D
 var ant_scene = preload("res://ant.tscn")
 var time_passed: float = 0
 var interval: float = 100
-var ant_spawn_interval: float = 10.0  # Time in seconds to spawn a new ant
+var ant_spawn_interval: float = 1.0  # Time in seconds to spawn a new ant
 
 func _ready() -> void:
-	ResourcePositions.positions.push_back(self)
+	ResourcePositions.positions.push_back(position)
+	Storage.anthill_position = $Sprite2D.position
 
 func _process(delta: float) -> void:
 	time_passed += delta
@@ -27,7 +28,7 @@ func _process(delta: float) -> void:
 	# Spawn ants at regular intervals
 	ant_spawn_interval -= delta
 	if ant_spawn_interval <= 0:
-		for i in range(Storage.working_ants / ResourcePositions.resources.size()):
+		for i in range(ResourcePositions.resources.filter(func(resource): return resource.workers > 0).size()):
 			spawn_ant($Sprite2D.position)
 		ant_spawn_interval = 10.0  # Reset the spawn interval
 

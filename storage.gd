@@ -7,6 +7,7 @@ static var ants = []
 # список ресов (индекс - уровень)
 static var anthill_updates = [25, 75, 200, 500]
 static var anthill_level = 0
+static var anthill_position = Vector2.ZERO
 
 static var resources = 0
 
