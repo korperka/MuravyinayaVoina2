@@ -1,15 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3x2ifqaylc5i"]
+[gd_scene load_steps=7 format=3 uid="uid://d3x2ifqaylc5i"]
 
 [ext_resource type="Script" path="res://spawn.gd" id="1_2glsl"]
 [ext_resource type="Script" path="res://ant_hill.gd" id="1_ysck7"]
-[ext_resource type="Texture2D" uid="uid://bwtk67xxvmx4c" path="res://icon.svg" id="2_3cdwb"]
+[ext_resource type="Texture2D" uid="uid://b8w2um7ejsl71" path="res://anthill.png" id="3_fd3tl"]
+[ext_resource type="Script" path="res://camera.gd" id="4_t1f4r"]
+[ext_resource type="FontFile" uid="uid://dimoc3hwcdlqp" path="res://minecraft_font.ttf" id="5_5gv50"]
+[ext_resource type="Script" path="res://info.gd" id="6_ebap2"]
 
 [node name="MainNode" type="Node2D"]
 script = ExtResource("1_2glsl")
 
 [node name="AntHill" type="StaticBody2D" parent="."]
+position = Vector2(1, 0)
 script = ExtResource("1_ysck7")
 
 [node name="Sprite2D" type="Sprite2D" parent="AntHill"]
-position = Vector2(578, 327)
-texture = ExtResource("2_3cdwb")
+z_index = 2
+position = Vector2(579, 325)
+scale = Vector2(1.82157, 1.82157)
+texture = ExtResource("3_fd3tl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(581, 324)
+script = ExtResource("4_t1f4r")
+
+[node name="info" type="RichTextLabel" parent="."]
+z_index = 5
+offset_left = 10.0
+offset_right = 218.0
+offset_bottom = 92.0
+theme_override_fonts/normal_font = ExtResource("5_5gv50")
+theme_override_fonts/bold_italics_font = ExtResource("5_5gv50")
+theme_override_fonts/bold_font = ExtResource("5_5gv50")
+bbcode_enabled = true
+text = "Resources:  {resources}
+Ants: {ants}
+Anthill level: {level}"
+script = ExtResource("6_ebap2")

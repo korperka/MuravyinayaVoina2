@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://hl5s5nhj8x6d"]
+[gd_scene load_steps=2 format=3 uid="uid://hl5s5nhj8x6d"]
+
+[ext_resource type="Texture2D" uid="uid://c7assir52pv7l" path="res://GrassTile2.png" id="1_acf0q"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="GrassTile2" type="Sprite2D" parent="."]
+position = Vector2(51, 46)
+scale = Vector2(3, 3)
+texture = ExtResource("1_acf0q")

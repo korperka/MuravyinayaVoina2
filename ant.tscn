@@ -35,6 +35,7 @@ animations = [{
 [node name="Ant" type="Node2D"]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+z_index = 1
 script = ExtResource("1_xrkwy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]

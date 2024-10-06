@@ -1,6 +1,6 @@
 extends Node
 
-static var ants_count = 100
+static var ants_count = 20
 static var working_ants = 0
 static var ants = []
 

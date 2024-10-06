@@ -7,7 +7,7 @@ var button_scene = preload("res://buttons.tscn")  # Загрузка сцены 
 # Number of objects to create
 var number_of_objects = 5
 var min_spawn_distance = 150
-var max_iterations = 100
+var max_iterations = 10
 
 var object_scenes = [preload("res://grassTile1.tscn"), preload("res://grassTile2.tscn"), preload("res://grassTile3.tscn")]
 
@@ -15,15 +15,15 @@ var rng = RandomNumberGenerator.new()
 
 func _floor():
 	# Number of objects to create
-	var tilesX = 12
-	var tilesY = 10
-	var viewport_size = get_viewport().get_size();
+	var tilesX = 20
+	var tilesY = 25
+	var viewport_size = get_viewport().get_size()
 	for i in range(tilesX):
 		for j in range(tilesY):
-			var r = int(rng.randf_range(0, 2))
+			var r = int(rng.randf_range(0,2))
 			var instance = object_scenes[r].instantiate(PackedScene.GEN_EDIT_STATE_INSTANCE)
 			 # Randomly position the instance within the screen area
-			var random_position = Vector2(i*((viewport_size.x+100)/tilesX), j*(viewport_size.y/tilesY))
+			var random_position = Vector2(i*((viewport_size.x)/tilesX), j*(viewport_size.y/tilesY))
 			instance.position = random_position
   
 			# Add the instance to the current scene
@@ -59,11 +59,13 @@ func _ready():
 		instance.position = pos
 		add_child(instance)
 		
+		ResourcePositions.resources.push_front(instance)
+		
 		# Создаем и добавляем кнопки
 		var buttons_instance = button_scene.instantiate()
 		
 		# Устанавливаем позицию кнопок относительно позиции листьев
-		buttons_instance.position = instance.position - Vector2(0, 60)
+		buttons_instance.position = instance.position - Vector2(0, 80)
 		
 		add_child(buttons_instance)
 #
