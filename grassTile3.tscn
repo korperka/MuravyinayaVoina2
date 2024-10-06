@@ -5,6 +5,6 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="GrassTile3" type="Sprite2D" parent="."]
-position = Vector2(51, 53)
-scale = Vector2(3, 3)
+position = Vector2(0, 3.8147e-06)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_hw4d0")
