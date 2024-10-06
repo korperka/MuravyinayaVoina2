@@ -50,6 +50,10 @@ func find_random_leaf_pile() -> Vector2:
 	print("No available leaf piles found")
 	return Vector2.ZERO
 
+func animatic():
+	var random_X = randf_range(get_viewport().get_size().x+50, get_viewport().get_size().x+150)
+	var random_Y = randf_range(get_viewport().get_size().y+50, get_viewport().get_size().y+150)
+
 func spawn_ant(pos: Vector2) -> Ant:
 	var instance_scene = ant_scene.instantiate()
 	var ant_instance = instance_scene.get_node("CharacterBody2D") as Ant
